@@ -1,0 +1,26 @@
+{
+  "name": "mondodb_gridfile_memory_leak",
+  "version": "1.0.0",
+  "description": "This example shows memory leak in node during usage of MongoDB and gridfile lib",
+  "main": "index.js",
+  "scripts": {
+    "create": "node ./src/create.js",
+    "select": "node ./src/select.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedSparrowEU/mondodb_gridfile_memory_leak.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RedSparrowEU/mondodb_gridfile_memory_leak/issues"
+  },
+  "homepage": "https://github.com/RedSparrowEU/mondodb_gridfile_memory_leak#readme",
+  "dependencies": {
+    "gridfile": "^1.0.1",
+    "mongoose": "^5.10.9"
+  }
+}
