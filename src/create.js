@@ -2,7 +2,7 @@ const config = require('./config');
 const blobSchema = require('./schema');
 const { Timer, memoryUsage } = require('./helpers');
 
-const { mbConnect, mbWriteDoc } = require('./components/MongoBlob');
+const { mbConnect, mbClose, mbWriteDoc } = require('./components/MongoBlob');
 
 const prepareDocument = () => {
   const doc = [];
@@ -21,7 +21,7 @@ const create = async () => {
 
   let doc = prepareDocument();
 
-  console.log('Connectiing db...');
+  console.log('Connecting db...');
   await mbConnect(
     config.dbName,
     config.mongoOptions,
@@ -32,7 +32,7 @@ const create = async () => {
 
   console.log(`Writing doc... ${memoryUsage()}`);
 
-  const noOfInserts = 100;
+  const noOfInserts = 1;
 
   for (let i = 0; i < noOfInserts; i++) {
     Timer.start();
@@ -43,7 +43,11 @@ const create = async () => {
       } of ${noOfInserts} in ${Timer.stop()}ms  ${memoryUsage()}`
     );
   }
-  console.log('Waiting for garbage collector... (10s)');
+
+  await mbClose();
+
+  console.log(`Waiting 10s for garbage collector... ${memoryUsage()} `);
+
   setTimeout(() => {
     console.log(`Finished. ${memoryUsage()}`);
   }, 10000);
