@@ -1,6 +1,6 @@
 # Mongoose read write grid file
 
-This example shows memory during usage of MongoDB and gridfile lib
+This example shows memory usage during of MongoDB and gridfile lib
 
 ## Setup:
 
