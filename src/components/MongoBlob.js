@@ -98,8 +98,6 @@ const getBuffer = (id) => {
     };
     writable.on('finish', () => {
       resolve(Buffer.concat(chunks));
-      // chunks = [];
-      // gridFileById = [];
       writable.destroy();
     });
     gridFileById.downloadStream(writable);
