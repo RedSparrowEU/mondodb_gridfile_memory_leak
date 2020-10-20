@@ -4,6 +4,8 @@ const { Timer, memoryUsage } = require('./helpers');
 
 const { mbConnect, mbClose, mbWriteDoc } = require('./components/MongoBlob');
 
+const DROP_DB = true;
+
 const prepareDocument = () => {
   const doc = [];
   for (let iField = 0; iField < 10; iField++) {
@@ -26,7 +28,8 @@ const create = async () => {
     config.dbName,
     config.mongoOptions,
     config.modelName,
-    blobSchema
+    blobSchema,
+    DROP_DB
   );
   console.log('Connected.');
 
